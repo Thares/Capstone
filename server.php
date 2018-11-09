@@ -64,6 +64,6 @@ if (isset($_POST['login_user'])) {
   		array_push($errors, "Wrong username/password combination");
   	}
   }
-}    
-    
+}
+}
 ?>
