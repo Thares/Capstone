@@ -7,10 +7,10 @@ $errors = array();
 
 $db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'Capstone_DB');
 
-if (isset($_POST['reg_user'])) {
+if (isset($_POST['User'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $pass_1 = mysqli_real_escape_string($db, $_POST['pass_1']);
-  $pass_2 = mysqli_real_escape_string($db, $_POST['pass_2']);
+  $pass_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+  $pass_2 = mysqli_real_escape_string($db, $_POST['password_2']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
 
   if (empty($username)) { array_push($errors, "Username is required"); }
@@ -53,7 +53,7 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$password = md5($password);
+  	$pass = md5($pas);
   	$query = "SELECT * FROM users WHERE username='$username' AND pass='$pass'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
@@ -66,4 +66,3 @@ if (isset($_POST['login_user'])) {
   }
 }
 }
-?>
