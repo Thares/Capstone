@@ -34,7 +34,6 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
     var fileobj;
     function upload_file(e) {
@@ -71,6 +70,8 @@
 </script>
 
 <?PHP
+$db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'Capstone_DB');
+    
 $arr_file_types = ['image/pdf'];
  
 if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
