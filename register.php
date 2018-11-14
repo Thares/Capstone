@@ -10,7 +10,7 @@
     <h2>Register</h2>
     </div>
     
-    <form method="post" action="register.php">
+    <form method="post" action="server.php">
     <?php include('errors.php'); ?>
     <div class="input-group">
     <label>Username</label>    
@@ -18,7 +18,7 @@
     </div>
   	<div class="input-group">
   	  <label>Password</label>
-  	  <input type="password" name="pass_1">
+  	  <input type="password" name="pass">
   	</div>
   	<div class="input-group">
   	  <label>Confirm password</label>
