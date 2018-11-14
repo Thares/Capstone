@@ -9,13 +9,13 @@ $db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'tha
 
 if (isset($_POST['User'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $pass_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-  $pass_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $pass_1 = mysqli_real_escape_string($db, $_POST['pass_1']);
+  $pass_2 = mysqli_real_escape_string($db, $_POST['pass_2']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
 
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($pass_1)) { array_push($errors, "Password is required"); }
-  if ($password_1 != $pass_2) { array_push($errors, "The two passwords do not match"); }
+  if ($pass_1 != $pass_2) { array_push($errors, "The two passwords do not match"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
 
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
