@@ -9,13 +9,11 @@ $db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'tha
 
 if (isset($_POST['User'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $pass_1 = mysqli_real_escape_string($db, $_POST['pass_1']);
-  $pass_2 = mysqli_real_escape_string($db, $_POST['pass_2']);
+  $pass = mysqli_real_escape_string($db, $_POST['pass']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
 
   if (empty($username)) { array_push($errors, "Username is required"); }
-  if (empty($pass_1)) { array_push($errors, "Password is required"); }
-  if ($pass_1 != $pass_2) { array_push($errors, "The two passwords do not match"); }
+  if (empty($pass)) { array_push($errors, "Password is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
 
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
@@ -33,7 +31,7 @@ if (isset($_POST['User'])) {
   }
 
   if (count($errors) == 0) {
-  	$pass = md5($pass_1);
+  	$pass = md5($pass);
   	$query = "INSERT INTO users (username, password, email) 
   			  VALUES('$username', '$pass', '$email')";
   	mysqli_query($db, $query);
@@ -53,7 +51,7 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-  	$pass = md5($pas);
+  	$pass = md5($pass);
   	$query = "SELECT * FROM users WHERE username='$username' AND pass='$pass'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
