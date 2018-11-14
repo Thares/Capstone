@@ -4,7 +4,12 @@
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Login</title>
 </head>
-
+<nav> 
+    <a href="index.php">Home</a> &nbsp;
+    <a href="drag.php">Upload/Download</a> &nbsp;
+    <a href="email.php">Email Files</a> &nbsp;
+    <a href="login.php">Logout</a> &nbsp;
+</nav>
 <style>
     #drop_file_zone {
         background-color: #EEE; 

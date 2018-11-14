@@ -17,6 +17,12 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<nav> 
+    <a href="index.php">Home</a> &nbsp;
+    <a href="drag.php">Upload/Download</a> &nbsp;
+    <a href="email.php">Email Files</a> &nbsp;
+    <a href="login.php">Logout</a> &nbsp;
+</nav>
 <body>
 
 <div class="header">

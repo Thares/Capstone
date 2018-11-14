@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+    <nav> 
+    <a href="index.php">Home</a> &nbsp;
+    <a href="drag.php">Upload/Download</a> &nbsp;
+    <a href="email.php">Email Files</a> &nbsp;
+    <a href="login.php">Logout</a> &nbsp;
+</nav>
 <form enctype="multipart/form-data" method="POST" action=""> 
 	<label>Your Name <input type="text" name="sender_name" /> </label> 
 	<label>Your Email <input type="email" name="sender_email" /> </label> 
