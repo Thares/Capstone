@@ -1,6 +1,6 @@
 <?php
-echo "this page is loading, fingers crossed";
-echo "the user name should be ".$_POST['username'];
+#echo "this page is loading, fingers crossed";
+#echo "the user name should be ".$_POST['username'];
 session_start();
 
 $username = "";
@@ -11,18 +11,18 @@ echo count($errors);
 $db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'projectdb');
 
 if (isset($_POST['username'])) {
-  echo "testing - we made it inside our main conditional block, yay!";
-  #$username = mysqli_real_escape_string($db, $_POST['username']);
-  #$pass = mysqli_real_escape_string($db, $_POST['pass']);
-  #$email = mysqli_real_escape_string($db, $_POST['email']);
-  $username = $_POST['username'];
-  $pass     = $_POST['pass'];
-  $email    = $_POST['email'];
-	echo "**** testing key values ****".$username.$pass.$email."****";
+  #echo "testing - we made it inside our main conditional block, yay!";
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $pass = mysqli_real_escape_string($db, $_POST['pass']);
+  $email = mysqli_real_escape_string($db, $_POST['email']);
+  #$username = $_POST['username'];
+  #$pass     = $_POST['pass'];
+  #$email    = $_POST['email'];
+	#echo "**** testing key values ****".$username.$pass.$email."****";
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($pass)) { array_push($errors, "Password is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
- echo "made it past error checking";
+ #echo "made it past error checking";
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);

@@ -18,11 +18,11 @@
     </div>
   	<div class="input-group">
   	  <label>Password</label>
-  	  <input type="password" name="pass">
+  	  <input type="pass" name="pass"> <"value=<?php echo $pass; ?>">
   	</div>
   	<div class="input-group">
   	  <label>Confirm password</label>
-  	  <input type="password" name="pass_2">
+  	  <input type="pass" name="pass"> <"value=<?php echo $pass; ?>">
   	</div>
     <div class="input-group">
   	  <label>Email</label>
