@@ -41,7 +41,7 @@ if (isset($_POST['username'])) {
   	$pass = md5($pass);
   	$query = "INSERT INTO projectdb.users (username, pass, email) 
   			  VALUES('$username', '$pass', '$email')";
-	echo $query;
+	#echo $query;
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
@@ -59,7 +59,7 @@ if (isset($_POST['login_user'])) {
   }
 
   if (count($errors) == 0) {
-	echo "should be in redirect block if statement";
+	#echo "should be in redirect block if statement";
   	$pass = md5($pass);
   	$query = "SELECT * FROM users WHERE username='$username' AND pass='$pass'";
   	$results = mysqli_query($db, $query);
