@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-      <title>Login</title>
+      <title>Upload files</title>
 </head>
 <nav> 
     <a href="index.php">Home</a> &nbsp;
@@ -61,7 +61,7 @@
             form_data.append('file', file_obj);
             $.ajax({
                 type: 'POST',
-                url: 'ajax.php',
+                url: 'drag.php',
                 contentType: false,
                 processData: false,
                 data: form_data,
@@ -75,9 +75,9 @@
 </script>
 
 <?PHP
-$db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'Capstone_DB');
+$db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'projectdb');
     
-$arr_file_types = ['image/pdf'];
+$arr_file_types = ['text/pdf'];
  
 if (!(in_array($_FILES['file']['type'], $arr_file_types))) {
     echo "false";

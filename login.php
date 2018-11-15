@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration</title>
+  <title>AChording.ly Login</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
   	<h2>Login</h2>
   </div>
 	 
-  <form method="post" action="server.php">
+  <form method="post" action="login.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Username</label>
@@ -18,7 +18,7 @@
   	</div>
   	<div class="input-group">
   		<label>Password</label>
-  		<input type="pass" name="pass">
+  		<input type="password" name="password">
   	</div>
   	<div class="input-group">
   		<button type="submit" class="btn" name="login_user">Login</button>
@@ -28,3 +28,4 @@
   	</p>
   </form>
 </body>
+</html>

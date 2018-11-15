@@ -1,28 +1,26 @@
 <?php
-#echo "this page is loading, fingers crossed";
-#echo "the user name should be ".$_POST['username'];
 session_start();
 
 $username = "";
 $email    = "";
 $errors = array(); 
 
-echo count($errors);
 $db = mysqli_connect('capstonedb.cmste82q8owq.us-east-1.rds.amazonaws.com', 'thares96', 'Guitars6', 'projectdb');
 
-if (isset($_POST['username'])) {
-  #echo "testing - we made it inside our main conditional block, yay!";
+// REGISTER USER
+if (isset($_POST['reg_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $pass = mysqli_real_escape_string($db, $_POST['pass']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
-  #$username = $_POST['username'];
-  #$pass     = $_POST['pass'];
-  #$email    = $_POST['email'];
-	#echo "**** testing key values ****".$username.$pass.$email."****";
+  $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
+  $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+
   if (empty($username)) { array_push($errors, "Username is required"); }
-  if (empty($pass)) { array_push($errors, "Password is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
- #echo "made it past error checking";
+  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if ($password_1 != $password_2) {
+	array_push($errors, "The two passwords do not match");
+  }
+
   $user_check_query = "SELECT * FROM users WHERE username='$username' OR email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
@@ -36,32 +34,34 @@ if (isset($_POST['username'])) {
       array_push($errors, "email already exists");
     }
   }
- // echo "hello world - manual debugging statement here - low tech but works";
+
   if (count($errors) == 0) {
-  	$pass = md5($pass);
-  	$query = "INSERT INTO projectdb.users (username, pass, email) 
-  			  VALUES('$username', '$pass', '$email')";
-	#echo $query;
+  	$password = md5($password_1);
+
+  	$query = "INSERT INTO users (username, email, password) 
+  			  VALUES('$username', '$email', '$password')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');
   }
+}
+
+//Login User
 if (isset($_POST['login_user'])) {
   $username = mysqli_real_escape_string($db, $_POST['username']);
-  $pass = mysqli_real_escape_string($db, $_POST['pass']);
+  $password = mysqli_real_escape_string($db, $_POST['password']);
 
   if (empty($username)) {
   	array_push($errors, "Username is required");
   }
-  if (empty($pass)) {
+  if (empty($password)) {
   	array_push($errors, "Password is required");
   }
 
   if (count($errors) == 0) {
-	#echo "should be in redirect block if statement";
-  	$pass = md5($pass);
-  	$query = "SELECT * FROM users WHERE username='$username' AND pass='$pass'";
+  	$password = md5($password);
+  	$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
   	$results = mysqli_query($db, $query);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
@@ -72,4 +72,5 @@ if (isset($_POST['login_user'])) {
   	}
   }
 }
-}
+
+?>
