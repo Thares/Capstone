@@ -15,12 +15,16 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+  
+<link rel="stylesheet" href="styles.css" >
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <nav> 
     <a href="index.php">Home</a> &nbsp;
-    <a href="drag.php">Upload/Download</a> &nbsp;
-    <a href="email.php">Email Files</a> &nbsp;
+    <a href="upload.php">Upload/Download</a> &nbsp;
+    <a href="view.php">View Files</a> &nbsp;
     <a href="login.php">Logout</a> &nbsp;
 </nav>
 <body>
