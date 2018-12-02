@@ -15,7 +15,7 @@ if(isset($name) && !empty($name)){
 		$location = "files/";
         
 		if(move_uploaded_file($tmp_name, $location.$name)){
-			$query = "INSERT INTO 'files' (name, size, type, location) VALUES ('$name', '$size', '$type', '$location$name')";
+			$query = "INSERT INTO files (name, size, type, location) VALUES ('$name', '$size', '$type', '$location$name')";
         		$result = mysqli_query($connection, $query);
 			$smsg = "Uploaded Successfully.";	
 		}else{
