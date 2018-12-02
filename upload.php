@@ -1,17 +1,21 @@
 <?php
 require('connect.php');
+if(isset($_FILES) && !empty($_FILES)){
 $name = $_FILES['file']['name'];
 $size = $_FILES['file']['size'];
 $type = $_FILES['file']['type'];
  
 $tmp_name = $_FILES['file']['tmp_name'];
- 
+}
 $extension = substr($name, strpos($name, '.') + 1);
  
-$max_size = 10000000;
+$max_size = 500000;
 if(isset($name) && !empty($name)){
-	if(($extension == "pdf" || $extension == "pdf") && $type == "image/pdf" && $extension == $size<=$max_size){
+	if(($extension == "pdf" || $extension == "pdf") && $type == "application/pdf" && $size<=$max_size){
+    //if (true){
 		$location = "files/";
+        //$name=$name.get a date time stamp as a string
+        
 		if(move_uploaded_file($tmp_name, $location.$name)){
 			$query = "INSERT INTO `files` (name, size, type, location) VALUES ('$name', '$size', '$type', '$location$name')";
         		$result = mysqli_query($connection, $query);
@@ -26,14 +30,15 @@ if(isset($name) && !empty($name)){
 	$fmsg = "Please Select a File";
 }
 ?>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>File Upload </title>
+	<title>Upload AChording.ly</title>
 	
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
   
-<link rel="stylesheet" href="styles.css" >
+<link rel="stylesheet" href="style.css" >
  
 <!-- JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -42,8 +47,8 @@ if(isset($name) && !empty($name)){
  
 <nav> 
     <a href="index.php">Home</a> &nbsp;
-    <a href="upload.php">Upload/Download</a> &nbsp;
-    <a href="view.php">View Files</a> &nbsp;
+    <a href="upload.php">Upload</a> &nbsp;
+    <a href="view.php">View</a> &nbsp;
     <a href="login.php">Logout</a> &nbsp;
 </nav>    
     
@@ -51,8 +56,8 @@ if(isset($name) && !empty($name)){
 <?php //echo $name; ?>
 <?php //echo $size; ?>
 <?php //echo $type; ?>
-<?php echo $tmp_name; ?>
-      <form class="form-signin" method="POST" enctype="multipart/form-data">
+<?php //echo $tmp_name; ?>
+      <form class="form-signin" action = "upload.php" method="POST" enctype="multipart/form-data">
       <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
       <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>      
         <h2 class="form-signin-heading">Upload File</h2>

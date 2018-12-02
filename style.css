@@ -2,18 +2,23 @@
   margin: 0px;
   padding: 0px;
 }
-body {
-  font-size: 120%;
-  background: #F8F8FF;
+navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
 }
-
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #DCDCDC !important;
+    text-align: center;
+}
 .header {
   width: 30%;
-  margin: 50px auto 0px;
+  margin: 25px auto 0px;
   color: white;
-  background: #5F9EA0;
+  background-color: #B0C4DE !important;
   text-align: center;
-  border: 1px solid #B0C4DE;
+  border: 1px solid #a94442 !important;
   border-bottom: none;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
@@ -22,16 +27,18 @@ form, .content {
   width: 30%;
   margin: 0px auto;
   padding: 20px;
-  border: 1px solid #B0C4DE;
+  border: 1px solid #a94442 !important;
   background: white;
   border-radius: 0px 0px 10px 10px;
+    text-align: center;
 }
 .input-group {
   margin: 10px 0px 10px 0px;
+    text-align: center;
 }
 .input-group label {
   display: block;
-  text-align: left;
+  text-align: center;
   margin: 3px;
 }
 .input-group input {
@@ -41,14 +48,16 @@ form, .content {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid gray;
+    text-align: center;
 }
 .btn {
   padding: 10px;
   font-size: 15px;
   color: white;
-  background: #5F9EA0;
+  background: #B0C4DE;
   border: none;
   border-radius: 5px;
+    text-align: center;
 }
 .error {
   width: 92%; 
@@ -58,11 +67,15 @@ form, .content {
   color: #a94442; 
   background: #f2dede; 
   border-radius: 5px; 
-  text-align: left;
+  text-align: center;
+    
 }
 .success {
   color: #3c763d; 
   background: #dff0d8; 
   border: 1px solid #3c763d;
   margin-bottom: 20px;
+    text-align: center;
 }
+
+
