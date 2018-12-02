@@ -12,12 +12,10 @@ $extension = substr($name, strpos($name, '.') + 1);
 $max_size = 500000;
 if(isset($name) && !empty($name)){
 	if(($extension == "pdf" || $extension == "pdf") && $type == "application/pdf" && $size<=$max_size){
-    //if (true){
 		$location = "files/";
-        //$name=$name.get a date time stamp as a string
         
 		if(move_uploaded_file($tmp_name, $location.$name)){
-			$query = "INSERT INTO `files` (name, size, type, location) VALUES ('$name', '$size', '$type', '$location$name')";
+			$query = "INSERT INTO 'files' (name, size, type, location) VALUES ('$name', '$size', '$type', '$location$name')";
         		$result = mysqli_query($connection, $query);
 			$smsg = "Uploaded Successfully.";	
 		}else{
